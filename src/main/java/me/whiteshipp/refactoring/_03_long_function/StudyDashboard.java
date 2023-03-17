@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -77,22 +78,22 @@ public class StudyDashboard {
             writer.print(header(participants.size()));
 
             participants.forEach(p -> {
-                String markdownForHomework = getMarkdownForParticipant(p);
+                String markdownForHomework = getMarkdownForParticipant(p.username(), p.homework());
                 writer.print(markdownForHomework);
             });
         }
     }
 
-    private double getRate(Participant p) {
-        long count = p.homework().values().stream()
+    private double getRate(Map<Integer, Boolean> homework) {
+        long count = homework.values().stream()
                 .filter(v -> v == true)
                 .count();
         double rate = count * 100.0 / this.totalNumberOfEvents;
         return rate;
     }
 
-    private String getMarkdownForParticipant(Participant p) {
-        String markdownForParticipant = String.format("| %s %s | %.2f%% |%n", p.username(), checkMark(p), getRate(p));
+    private String getMarkdownForParticipant(String username, Map<Integer, Boolean> homework) {
+        String markdownForParticipant = String.format("| %s %s | %.2f%% |%n", username, checkMark(homework), getRate(homework));
         return markdownForParticipant;
     }
 
@@ -114,10 +115,10 @@ public class StudyDashboard {
         return header.toString();
     }
 
-    private String checkMark(Participant p) {
+    private String checkMark(Map<Integer, Boolean> homework) {
         StringBuilder line = new StringBuilder();
         for (int i = 0; i < this.totalNumberOfEvents; i++) {
-            if(p.homework().containsKey(i) && p.homework().get(i)) {
+            if(homework.containsKey(i) && homework.get(i)) {
                 line.append("|:white_check_mark:");
             }else {
                 line.append("|:x:");
