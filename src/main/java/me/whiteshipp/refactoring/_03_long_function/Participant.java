@@ -9,7 +9,6 @@ public record Participant(String username, Map<Integer, Boolean> homework) {
         this(userName, new HashMap<>());
     }
 
-
     public void setHomeworkDone(int index) {
         this.homework.put(index, true);
     }
