@@ -42,19 +42,8 @@ public class StudyDashboard {
                     GHIssue issue = repository.getIssue(eventId);
                     List<GHIssueComment> comments = issue.getComments();
 
-                    Date firstCreatedAt = null;
-                    Participant first = null;
-                    for (GHIssueComment comment : comments) {
-                        Participant participant = findParticipant(participants, comment.getUserName());
-                        participant.setHomeworkDone(eventId);
-
-                        if (firstCreatedAt == null || comment.getCreatedAt().before(firstCreatedAt)) {
-                            firstCreatedAt = comment.getCreatedAt();
-                            first = participant;
-                        }
-                    }
-
-                    firstParticipantsForEachEvent[eventId - 1] = first;
+                    checkHomework(participants, eventId, comments);
+                    firstParticipantsForEachEvent[eventId - 1] = findFirst(comments, participants);
 
                     latch.countDown();
                 } catch (IOException e) {
@@ -67,6 +56,27 @@ public class StudyDashboard {
         service.shutdown();
 
         new StudyPrinter(this.totalNumberOfEvents, participants).execute();
+    }
+
+    private Participant findFirst(List<GHIssueComment> comments, List<Participant> participants) throws IOException {
+        Date firstCreatedAt = null;
+        Participant first = null;
+        for (GHIssueComment comment : comments) {
+            Participant participant = findParticipant(participants, comment.getUserName());
+
+            if (firstCreatedAt == null || comment.getCreatedAt().before(firstCreatedAt)) {
+                firstCreatedAt = comment.getCreatedAt();
+                first = participant;
+            }
+        }
+        return first;
+    }
+
+    private void checkHomework(List<Participant> participants, int eventId, List<GHIssueComment> comments) {
+        for (GHIssueComment comment : comments) {
+            Participant participant = findParticipant(participants, comment.getUserName());
+            participant.setHomeworkDone(eventId);
+        }
     }
 
     private Participant findParticipant(List<Participant> participants, String userName) {
