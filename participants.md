@@ -71,6 +71,7 @@
 | MinHeum |:x:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 6.67% |
 | MoonHKLee |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x: | 80.00% |
 | Myeongkook |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:white_check_mark:|:x:|:x:|:x:|:x:|:x: | 26.67% |
+| NineKy |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark: | 93.33% |
 | Ohzzi |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x: | 86.67% |
 | Park-SooYeon |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark: | 93.33% |
 | Park-Youngwoo |:x:|:x:|:x:|:x:|:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x: | 33.33% |
@@ -270,7 +271,6 @@
 | kwakwoohyun |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 33.33% |
 | kwj1270 |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark: | 100.00% |
 | kys4548 |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 33.33% |
-| kyu9 |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark: | 93.33% |
 | kyunyan |:x:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 6.67% |
 | ldw1220 |:x:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 6.67% |
 | league3236 |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x: | 46.67% |
@@ -288,7 +288,6 @@
 | memoregoing |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 33.33% |
 | messi1913 |:x:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 13.33% |
 | metorg |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 20.00% |
-| mia0406 |:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:white_check_mark:|:x:|:x:|:x: | 6.67% |
 | mimdong0917 |:x:|:x:|:x:|:x:|:x:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 6.67% |
 | minikuma |:x:|:white_check_mark:|:white_check_mark:|:x:|:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x: | 66.67% |
 | mintheon |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:white_check_mark:|:white_check_mark:|:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:white_check_mark: | 80.00% |
@@ -305,6 +304,7 @@
 | myBabyGrand |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x: | 80.00% |
 | n00nietzsche |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 20.00% |
 | nakyeonko3 |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 20.00% |
+| nayoung12 |:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:white_check_mark:|:x:|:x:|:x: | 6.67% |
 | nekisse-lee |:x:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 6.67% |
 | nhs0912 |:x:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:x: | 6.67% |
 | nimkoes |:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:white_check_mark: | 93.33% |
