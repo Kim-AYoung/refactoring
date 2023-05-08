@@ -6,6 +6,7 @@ import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GitHub;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
@@ -29,6 +30,7 @@ public class StudyDashboard {
         GitHub gitHub = GitHub.connect();
         GHRepository repository = gitHub.getRepository("whiteship/live-study");
         List<Participant> participants = new CopyOnWriteArrayList<>();
+        Participant[] firstParticipantsForEachEvent = new Participant[this.totalNumberOfEvents];
 
         ExecutorService service = Executors.newFixedThreadPool(8);
         CountDownLatch latch = new CountDownLatch(totalNumberOfEvents);
@@ -39,10 +41,20 @@ public class StudyDashboard {
                 try {
                     GHIssue issue = repository.getIssue(eventId);
                     List<GHIssueComment> comments = issue.getComments();
+
+                    Date firstCreatedAt = null;
+                    Participant first = null;
                     for (GHIssueComment comment : comments) {
                         Participant participant = findParticipant(participants, comment.getUserName());
                         participant.setHomeworkDone(eventId);
+
+                        if (firstCreatedAt == null || comment.getCreatedAt().before(firstCreatedAt)) {
+                            firstCreatedAt = comment.getCreatedAt();
+                            first = participant;
+                        }
                     }
+
+                    firstParticipantsForEachEvent[eventId - 1] = first;
 
                     latch.countDown();
                 } catch (IOException e) {
