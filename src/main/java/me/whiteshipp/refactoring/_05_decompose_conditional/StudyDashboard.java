@@ -6,6 +6,7 @@ import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GitHub;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -15,10 +16,13 @@ import java.util.concurrent.Executors;
 
 public class StudyDashboard {
     private final int totalNumberOfEvents;
-
+    private final List<Participant> participants;
+    private final Participant[] firstParticipantsForEachEvent;
 
     public StudyDashboard(int totalNumberOfEvents) {
         this.totalNumberOfEvents = totalNumberOfEvents;
+        this.participants = new CopyOnWriteArrayList<>();
+        this.firstParticipantsForEachEvent = new Participant[this.totalNumberOfEvents];
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -27,11 +31,21 @@ public class StudyDashboard {
     }
 
     private void print() throws IOException, InterruptedException {
-        GitHub gitHub = GitHub.connect();
-        GHRepository repository = gitHub.getRepository("whiteship/live-study");
-        List<Participant> participants = new CopyOnWriteArrayList<>();
-        Participant[] firstParticipantsForEachEvent = new Participant[this.totalNumberOfEvents];
+        checkGithubIssues(getGhRepository());
+        new StudyPrinter(this.totalNumberOfEvents, this.participants).execute();
+        printFirstParticipants();
+    }
 
+    private void printFirstParticipants() {
+        Arrays.stream(this.firstParticipantsForEachEvent).forEach(p -> System.out.println(p.userName()));
+    }
+
+    private GHRepository getGhRepository() throws IOException {
+        GitHub gitHub = GitHub.connect();
+        return gitHub.getRepository("whiteship/live-study");
+    }
+
+    private void checkGithubIssues(GHRepository repository) throws InterruptedException {
         ExecutorService service = Executors.newFixedThreadPool(8);
         CountDownLatch latch = new CountDownLatch(totalNumberOfEvents);
 
@@ -42,8 +56,8 @@ public class StudyDashboard {
                     GHIssue issue = repository.getIssue(eventId);
                     List<GHIssueComment> comments = issue.getComments();
 
-                    checkHomework(participants, eventId, comments);
-                    firstParticipantsForEachEvent[eventId - 1] = findFirst(comments, participants);
+                    checkHomework(eventId, comments);
+                    this.firstParticipantsForEachEvent[eventId - 1] = findFirst(comments);
 
                     latch.countDown();
                 } catch (IOException e) {
@@ -54,15 +68,13 @@ public class StudyDashboard {
 
         latch.await();
         service.shutdown();
-
-        new StudyPrinter(this.totalNumberOfEvents, participants).execute();
     }
 
-    private Participant findFirst(List<GHIssueComment> comments, List<Participant> participants) throws IOException {
+    private Participant findFirst(List<GHIssueComment> comments) throws IOException {
         Date firstCreatedAt = null;
         Participant first = null;
         for (GHIssueComment comment : comments) {
-            Participant participant = findParticipant(participants, comment.getUserName());
+            Participant participant = findParticipant(comment.getUserName());
 
             if (firstCreatedAt == null || comment.getCreatedAt().before(firstCreatedAt)) {
                 firstCreatedAt = comment.getCreatedAt();
@@ -72,31 +84,31 @@ public class StudyDashboard {
         return first;
     }
 
-    private void checkHomework(List<Participant> participants, int eventId, List<GHIssueComment> comments) {
+    private void checkHomework(int eventId, List<GHIssueComment> comments) {
         for (GHIssueComment comment : comments) {
-            Participant participant = findParticipant(participants, comment.getUserName());
+            Participant participant = findParticipant(comment.getUserName());
             participant.setHomeworkDone(eventId);
         }
     }
 
-    private Participant findParticipant(List<Participant> participants, String userName) {
-        return isNewParticipant(participants, userName) ?
-                createNewParticipant(participants, userName) :
-                findExistingParticipant(participants, userName);
+    private Participant findParticipant(String userName) {
+        return isNewParticipant(userName) ?
+                createNewParticipant(userName) :
+                findExistingParticipant(userName);
     }
 
-    private Participant findExistingParticipant(List<Participant> participants, String userName) {
-        return participants.stream().filter(p -> p.userName().equals(userName)).findFirst().orElseThrow();
+    private Participant findExistingParticipant(String userName) {
+        return this.participants.stream().filter(p -> p.userName().equals(userName)).findFirst().orElseThrow();
     }
 
-    private Participant createNewParticipant(List<Participant> participants, String userName) {
+    private Participant createNewParticipant(String userName) {
         Participant participant;
         participant = new Participant(userName);
-        participants.add(participant);
+        this.participants.add(participant);
         return participant;
     }
 
-    private boolean isNewParticipant(List<Participant> participants, String userName) {
-        return participants.stream().noneMatch(p -> p.userName().equals(userName));
+    private boolean isNewParticipant(String userName) {
+        return this.participants.stream().noneMatch(p -> p.userName().equals(userName));
     }
 }
